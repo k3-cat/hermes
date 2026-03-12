@@ -1,0 +1,28 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "hermes",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-03-12",
+	"compatibility_flags": ["nodejs_compat"],
+
+	"workers_dev": false,
+
+	"minify": true,
+
+	"placement": { "mode": "smart" },
+
+	"assets": {
+		"directory": "./static",
+		"binding": "STATIC",
+		"run_worker_first": false,
+	},
+
+	"kv_namespaces": [
+		{ "binding": "KV_AUTH", "id": "27f5d7a1e3974828826ec85a1e74ed72" },
+		{ "binding": "KV_UPDATE", "id": "f2e685e4ffad481b8da804d1a7744811" },
+	],
+
+	"r2_buckets": [
+		{ "binding": "R2_STATIC", "bucket_name": "static" },
+	],
+}
