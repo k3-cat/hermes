@@ -2,7 +2,7 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "hermes",
 	"main": "src/index.ts",
-	"compatibility_date": "2026-03-12",
+	"compatibility_date": "2026-04-12",
 	"compatibility_flags": ["nodejs_compat"],
 
 	"workers_dev": false,
@@ -14,7 +14,16 @@
 		{ "binding": "KV_HRM", "id": "f2e685e4ffad481b8da804d1a7744811" },
 	],
 
-	"r2_buckets": [
-		{ "binding": "R2_STATIC", "bucket_name": "static" },
-	],
+	"r2_buckets": [{ "binding": "R2_STATIC", "bucket_name": "static" }],
+
+	"observability": {
+		"traces": {
+			"enabled": true,
+			"destinations": ["grafana-traces"],
+		},
+		"logs": {
+			"enabled": true,
+			"destinations": ["grafana-logs"],
+		},
+	},
 }

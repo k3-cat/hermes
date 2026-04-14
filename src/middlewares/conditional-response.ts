@@ -1,4 +1,3 @@
-import * as Sentry from "@sentry/cloudflare";
 import { createMiddleware } from "hono/factory";
 import { HttpRequestHeader, HttpResponseHeader, HttpStatus } from "http-enums";
 
@@ -73,7 +72,7 @@ export const conditionalResponse = createMiddleware<HonoCtx>(async (c, next) => 
 		return;
 	}
 
-	Sentry.logger.debug(Sentry.logger.fmt`M:cr - trim upstream ${c.res.status} into new 304`);
+	console.debug(`M:cr - trim upstream ${c.res.status} into new 304`);
 	const headers = new Headers(
 		RETAINED_304_HEADERS.entries()
 			.map(([_, name]) => [name, c.res.headers.get(name)])

@@ -1,5 +1,3 @@
-import * as Sentry from "@sentry/cloudflare";
-
 import { H } from "../../definitions";
 import { digestMessage } from "../../utils/digest-message";
 import { R2GetRet } from "./r2-get-ret";
@@ -34,7 +32,7 @@ export async function r2_upload(
 	let theData = data;
 	if (!sha256) {
 		if (data instanceof ReadableStream) {
-			Sentry.logger.debug("S:r2 - calculate sha256 for stream");
+			console.debug("S:r2 - calculate sha256 for stream");
 			const dataCopies = data.tee();
 			const digestStream = new crypto.DigestStream("SHA-256");
 			dataCopies[1].pipeTo(digestStream);
@@ -43,7 +41,7 @@ export async function r2_upload(
 		}
 		// string
 		else if (typeof data === "string") {
-			Sentry.logger.debug("S:r2 - calculate sha256 for string");
+			console.debug("S:r2 - calculate sha256 for string");
 			sha256 = await digestMessage(data);
 		}
 	}

@@ -3,14 +3,11 @@ import { HttpResponseHeader, HttpStatus } from "http-enums";
 
 import { renderer } from "../components/renderer";
 import { LogicalError } from "../errors";
-import { sentryTags } from "../middlewares/sentry-tags";
 import { HonoCtx } from "../schemas/hono-ctx";
 import adminRoute from "./admin";
 import subjectRoute from "./subject";
 
 const app = new Hono<HonoCtx>();
-
-app.use("/*", sentryTags);
 
 app.use(renderer);
 

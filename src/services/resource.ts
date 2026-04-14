@@ -1,5 +1,4 @@
 import { Buffer } from "node:buffer";
-import * as Sentry from "@sentry/cloudflare";
 import { Context } from "hono";
 import { HttpStatus } from "http-enums";
 
@@ -33,7 +32,7 @@ export async function fetchResources(c: Context<HonoCtx>, sub: string, ver: stri
 		manifest.entries().map(async ([platform, nameTemplate]) => {
 			const name = nameTemplate?.replace(VERSION_PLACEHOLDER, ver);
 			if (!name) {
-				Sentry.logger.error("S:r-fr - missing manifest");
+				console.error("S:r-fr - missing manifest");
 				return `!!! missing manifest item for '${platform}' !!!`;
 			}
 			const key = `${sub}/${name}`;

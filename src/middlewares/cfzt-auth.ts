@@ -1,5 +1,4 @@
 import { env } from "process";
-import * as Sentry from "@sentry/cloudflare";
 import { createMiddleware } from "hono/factory";
 import { HttpStatus } from "http-enums";
 import * as jose from "jose";
@@ -30,7 +29,7 @@ export const cfztAuth = () => {
 				if (!(err instanceof JOSEError)) {
 					throw err;
 				}
-				Sentry.logger.warn("M:a - failed to verify jwt", { err });
+				console.warn("M:a - failed to verify jwt", err);
 				throw new LogicalError(HttpStatus.UNAUTHORIZED, { hrm: "M:a", msg: "invalid token" });
 			}
 

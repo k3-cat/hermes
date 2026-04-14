@@ -1,4 +1,3 @@
-import * as Sentry from "@sentry/cloudflare";
 import { Context } from "hono";
 import { createMiddleware } from "hono/factory";
 import { HttpRequestHeader, HttpResponseHeader, HttpStatus } from "http-enums";
@@ -51,12 +50,12 @@ export const rangeable = createMiddleware<HonoCtx>(async (c, next) => {
 
 	const length = end - start + 1;
 	if (length === size) {
-		Sentry.logger.debug(Sentry.logger.fmt`M:r - full length reached (${size}), fix headers only`);
+		console.debug(`M:r - full length reached (${size}), fix headers only`);
 		fixHeaders(c, start, end, size, size);
 		return;
 	}
 
-	Sentry.logger.debug(Sentry.logger.fmt`M:r - slice response (${start}-${end}/${size})`);
+	console.debug(`M:r - slice response (${start}-${end}/${size})`);
 	const slicedStream = newSlicedStream(start, end);
 	const fixedlengthStream = new FixedLengthStream(length);
 	const res = c.res.clone();

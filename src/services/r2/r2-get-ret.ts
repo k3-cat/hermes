@@ -1,5 +1,4 @@
 import { Buffer } from "node:buffer";
-import * as Sentry from "@sentry/cloudflare";
 import { ContentfulStatusCode } from "hono/utils/http-status";
 import { HttpResponseHeader, HttpStatus } from "http-enums";
 
@@ -71,9 +70,7 @@ export class R2GetRet {
 			.map(([key, value]) => `${key}=:${Buffer.from(value).toString("base64")}:`);
 		headers.set(H.CONTENT_DIGEST, digest.join(","));
 		if (this.isPartial) {
-			Sentry.logger.debug(
-				Sentry.logger.fmt`S:r2-gr - partial content (${this.offset}+${this.length}/${this.obj.size})`,
-			);
+			console.debug(`S:r2-gr - partial content (${this.offset}+${this.length}/${this.obj.size})`);
 			headers.set(
 				HttpResponseHeader.CONTENT_RANGE,
 				`bytes ${this.offset}-${this.offset + this.length - 1}/${this.obj.size}`,

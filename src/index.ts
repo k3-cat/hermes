@@ -1,21 +1,9 @@
-import * as Sentry from "@sentry/cloudflare";
 import { HttpStatus } from "http-enums";
 
 import { LogicalError } from "./errors";
 import app from "./routers";
 
-export default Sentry.withSentry(
-	(env: Cloudflare.Env) => ({
-		dsn: env.SENTRY_DSN,
-
-		sendDefaultPii: true,
-		enableLogs: true,
-		tracesSampleRate: 1,
-
-		integrations: [Sentry.consoleLoggingIntegration({ levels: ["log", "warn", "error"] })],
-	}),
-	app,
-);
+export default app;
 
 app.onError((err, c) => {
 	const ray = c.req.header("Cf-Ray");
@@ -30,7 +18,7 @@ app.onError((err, c) => {
 		return c.json(payload, err.resInit);
 	}
 
-	Sentry.captureException(err);
+	// faro.api.pushError(err);
 	return c.json(
 		{
 			ray: ray,
