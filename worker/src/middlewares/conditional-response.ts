@@ -3,7 +3,7 @@ import { createMiddleware } from "hono/factory";
 import { HttpRequestHeader, HttpResponseHeader, HttpStatus } from "http-enums";
 
 import { LogicalError } from "$/errors";
-import type { HonoCtx } from "../../types/hono-ctx";
+import type { HonoCtx } from "#/types/hono-ctx";
 
 const RETAINED_304_HEADERS = [
 	HttpResponseHeader.CACHE_CONTROL,

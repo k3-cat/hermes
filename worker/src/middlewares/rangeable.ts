@@ -4,9 +4,9 @@ import { createMiddleware } from "hono/factory";
 import { HttpRequestHeader, HttpResponseHeader, HttpStatus } from "http-enums";
 
 import { LogicalError } from "$/errors";
-import type { HonoCtx } from "../../types/hono-ctx";
+import type { HonoCtx } from "#/types/hono-ctx";
 
-import { newSlicedStream } from "../utils/sliced-stream";
+import { newSlicedStream } from "$/utils/sliced-stream";
 
 const RANGE_PATTERN = /^bytes=([0-9]+)?-([0-9]+)?$/im;
 

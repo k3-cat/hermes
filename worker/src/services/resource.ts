@@ -4,7 +4,7 @@ import type { Context } from "hono";
 import { HttpStatus } from "http-enums";
 
 import { LogicalError } from "$/errors";
-import type { HonoCtx } from "../../types/hono-ctx";
+import type { HonoCtx } from "#/types/hono-ctx";
 
 import { getManifest, getManifestItemFor, getVer, setVer } from "./manifest";
 import { detectMimeFromName } from "./mime";

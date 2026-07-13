@@ -6,7 +6,7 @@ import * as jose from "jose";
 import { JOSEError } from "jose/errors";
 
 import { LogicalError } from "$/errors";
-import type { CfztJwtPayload, HonoCtxWithAuth } from "../../types/cfzt-auth";
+import type { CfztJwtPayload, HonoCtxWithAuth } from "#/types/cfzt-auth";
 
 const ISS = `https://${env.CFZT_TEAM_NAME}.cloudflareaccess.com`;
 const JWK_ENDPOINT = `${ISS}/cdn-cgi/access/certs`;

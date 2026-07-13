@@ -3,7 +3,10 @@
 	"include": [
 		"./src/**/*.ts",
 		"./src/**/*.tsx",
-		"./types/**/*.d.ts",
+		"../prisma/.gen/**/*.ts",
+		"../trpc/**/*.ts",
+		"../types/**/*.ts",
+		"../definitions/**/*.ts"
 	],
 	"compilerOptions": {
 		"lib": ["DOM", "DOM.Iterable", "ESNext"],
@@ -14,7 +17,9 @@
 		"composite": true,
 
 		"paths": {
-			"@/*": ["./src/*"]
+			"#/*": ["../*"],
+			"@/*": ["./src/*"],
+			"$/*": ["../worker/src/*"],
 		}
 	}
 }

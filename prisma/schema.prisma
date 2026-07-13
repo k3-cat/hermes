@@ -16,7 +16,7 @@ model menu {
     items item[]
 }
 
-enum platfrom {
+enum platform {
     ANY
     WINDOES
     LINUX
@@ -35,7 +35,7 @@ enum arch {
 model item {
     id         String   @id @default(uuid(7))
     menuId     String
-    platfrom   platfrom
+    platfrom   platform
     arch       arch
     target     String
     updated_at DateTime

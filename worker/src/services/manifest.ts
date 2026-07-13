@@ -3,7 +3,7 @@ import type { Context } from "hono";
 import { HttpStatus } from "http-enums";
 
 import { LogicalError } from "$/errors";
-import type { HonoCtx } from "../../types/hono-ctx";
+import type { HonoCtx } from "#/types/hono-ctx";
 
 const KV_TEMP_TTL = 3600;
 const KV_ALMOST_IMMUTABLE_TTL = 86400;

@@ -16,10 +16,15 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"typecheck": "tsc"
+		"typecheck": "tsc",
+    "gen:prisma": "pnpm dlx prisma generate",
+		"postinstall": "pnpm gen:prisma"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.2",
-		"@types/node": "^26.1.0"
+		"@trpc/server": "catalog:",
+		"@types/node": "catalog:",
+		"dotenv": "catalog:",
+		"zod": "catalog:"
 	}
 }

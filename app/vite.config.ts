@@ -18,14 +18,14 @@ export default defineConfig({
 			quoteStyle: "double",
 		}),
 		react(),
-		VitePWA({
-			registerType: "autoUpdate",
-			// @ts-expect-error: TS2322
-			manifest: appManifest,
-			pwaAssets: {
-				overrideManifestIcons: true,
-			},
-		}),
+		// VitePWA({
+		// 	registerType: "autoUpdate",
+		// 	// @ts-expect-error: TS2322
+		// 	manifest: appManifest,
+		// 	pwaAssets: {
+		// 		overrideManifestIcons: true,
+		// 	},
+		// }),
 	],
 	resolve: {
 		tsconfigPaths: true,

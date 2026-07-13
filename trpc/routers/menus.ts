@@ -1,9 +1,11 @@
-import { router, publicProcedure } from '$/trpc';
+import { router, publicProcedure } from '..'; // must avoid path aliases
 import { z } from 'zod/mini';
+
+const zMenuName = z.string().check(z.trim(), z.toLowerCase(), z.minLength(2));
 
 export const menuRouter = router({
 	byName: publicProcedure
-		.input(z.string().check(z.trim(), z.toLowerCase(), z.minLength(2))) // name
+		.input(zMenuName)
 		.query(async ({ input, ctx }) => {
 			return await ctx.var.prisma.menu.findUniqueOrThrow({
 				where: { name: input },
@@ -11,10 +13,10 @@ export const menuRouter = router({
 		}),
 
 	itemList: publicProcedure
-		.input(z.string().check(z.uuid()))
+		.input(zMenuName)
 		.query(async ({ input, ctx }) => {
 			return await ctx.var.prisma.menu.findUniqueOrThrow({
-				where: { id: input }
+				where: { name: input }
 			}).items()
 		})
 });

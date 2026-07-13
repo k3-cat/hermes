@@ -1,8 +1,8 @@
 import { atom, useSetAtom } from "jotai"
 
-const loadingCount = atom(0);
-const setCount = useSetAtom(loadingCount);
-export const beforeLoadingHandler = () => setCount(c => c += 1);
-export const afterLoadingHandler = () => setCount(c => c -= 1);
+const ALoadingCount = atom(0);
+const setCount = useSetAtom(ALoadingCount);
+export const increaseLoadingCount = () => setCount(c => c += 1);
+export const decreaseLoadingCount = () => setCount(c => c -= 1);
 
-export const isLoading = atom((get) => get(loadingCount) > 0);
+export const AIsLoading = atom((get) => get(ALoadingCount) > 0);

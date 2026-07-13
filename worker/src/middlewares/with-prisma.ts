@@ -1,6 +1,6 @@
-import type { HonoCtx } from "../../types/hono-ctx";
+import type { HonoCtx } from "#/types/hono-ctx";
 import { createMiddleware } from "hono/factory";
-import prismaClients from '$/prisma'
+import prismaClients from '@/src/lib/prisma'
 
 export const withPrisma = createMiddleware<HonoCtx>(async (c, next) => {
 	if (!c.get("prisma")) {

@@ -3,11 +3,11 @@ import { Context, Hono } from "hono";
 import { HttpResponseHeader, HttpStatus } from "http-enums";
 
 import { LogicalError } from "$/errors";
-import type { HonoCtx } from "../../types/hono-ctx";
+import type { HonoCtx } from "#/types/hono-ctx";
 import { trpcServer } from '@hono/trpc-server'
 import adminRoute from "./admin";
 import {trpcRouter} from "$/trpc-routers"
-import type { TrpcCtx } from "../../types/trpc-ctx";
+import type { TrpcCtx } from "$/lib/trpc";
 
 const app = new Hono<HonoCtx>();
 

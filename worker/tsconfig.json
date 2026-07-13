@@ -2,8 +2,9 @@
 	"extends": "../tsconfig.json",
 	"include": [
 		"./src/**/*.ts",
-		"./prisma/.gen/**/*.ts",
-		"./types/**/*.d.ts",
+		"../prisma/.gen/**/*.ts",
+		"../trpc/**/*.ts",
+		"../types/**/*.ts",
 		"../definitions/**/*.ts"
 	],
 	"compilerOptions": {
@@ -12,11 +13,5 @@
 		"esModuleInterop": true,
 		"isolatedModules": true,
 		"composite": true,
-
-		"paths": {
-			"@/*": ["../*"],
-			"@/prisma/*": ["./prisma/*"],
-			"$/*": ["./src/*"]
-		}
 	}
 }

@@ -1,4 +1,4 @@
-import { PrismaClient } from "@/prisma/.gen/client.js";
+import { PrismaClient } from "#/prisma/.gen/client";
 import { PrismaD1} from '@prisma/adapter-d1'
 import { env } from "cloudflare:workers";
 
