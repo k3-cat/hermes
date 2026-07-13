@@ -1,5 +1,8 @@
 # prod
 dist/
+/prisma/.gen/
+/prisma/db.sqlite
+routeTree.gen.ts
 
 # dev
 .yarn/

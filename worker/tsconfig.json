@@ -1,0 +1,22 @@
+{
+	"extends": "../tsconfig.json",
+	"include": [
+		"./src/**/*.ts",
+		"./prisma/.gen/**/*.ts",
+		"./types/**/*.d.ts",
+		"../definitions/**/*.ts"
+	],
+	"compilerOptions": {
+		"lib": ["ESNext"],
+		"types": [ "node","vite/client"],
+		"esModuleInterop": true,
+		"isolatedModules": true,
+		"composite": true,
+
+		"paths": {
+			"@/*": ["../*"],
+			"@/prisma/*": ["./prisma/*"],
+			"$/*": ["./src/*"]
+		}
+	}
+}

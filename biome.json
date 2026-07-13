@@ -1,0 +1,62 @@
+{
+	"$schema": "https://biomejs.dev/schemas/latest/schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"files": {
+		"ignoreUnknown": false,
+		"includes": [
+			"**/*.json",
+			"**/*.ts",
+			"**/*.tsx",
+			"!**/package.json",
+			"!types/worker-configuration.d.ts",
+			"!**/app/routeTree.gen.ts",
+			"!**/app/styles.css"
+		]
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"preset": "recommended",
+			"style": {
+				"noNonNullAssertion": "off",
+				"useImportType": {
+					"level": "on",
+					"options": {
+						"style": "separatedType"
+					}
+				}
+			}
+		}
+	},
+	"formatter": {
+		"enabled": true,
+		"expand": "auto",
+		"useEditorconfig": true
+	},
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": {
+					"level": "on",
+					"options": {
+						"groups": [
+							":NODE:",
+							["vite", "hono", "react", "cloudflare:*"],
+							["vite-*", "hono/**", "react/**", "react-*", "react-*/**"],
+							":BLANK_LINE:",
+							":PACKAGE:",
+							":BLANK_LINE:",
+							"$/**",
+							":BLANK_LINE:",
+							"./**"
+						]
+					}
+				}
+			}
+		}
+	}
+}

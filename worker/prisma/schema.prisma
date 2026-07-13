@@ -1,0 +1,57 @@
+datasource db {
+    provider = "sqlite"
+}
+
+generator client {
+    provider        = "prisma-client"
+    output          = "./.gen"
+    previewFeatures = ["relationJoins", "nativeDistinct"]
+}
+
+model menu {
+    id   String @id @default(uuid(7))
+    name String @unique
+    ver  String
+
+    items item[]
+}
+
+enum platfrom {
+    ANY
+    WINDOES
+    LINUX
+    MACOS
+    ANDROID
+    IOS
+}
+
+enum arch {
+    ANY
+    X86_64
+    AARCH64
+    AARCH32
+}
+
+model item {
+    id         String   @id @default(uuid(7))
+    menuId     String
+    platfrom   platfrom
+    arch       arch
+    target     String
+    updated_at DateTime
+
+    menu menu @relation(fields: [menuId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+    @@unique([menuId, platfrom, arch])
+}
+
+enum source_type {
+    GITHUB
+}
+
+model source {
+    id     String      @id @default(uuid(7))
+    menuId String
+    type   source_type
+    uri    String
+}

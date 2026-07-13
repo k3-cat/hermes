@@ -1,13 +1,23 @@
 {
-	"$schema": "node_modules/wrangler/config-schema.json",
+	"$schema": "https://www.unpkg.com/wrangler@latest/config-schema.json",
+
 	"name": "hermes",
-	"main": "src/index.ts",
-	"compatibility_date": "2026-04-12",
+	"main": "./worker/src/index.ts",
+	"compatibility_date": "2026-07-01",
 	"compatibility_flags": ["nodejs_compat"],
 
 	"workers_dev": false,
 
 	"placement": { "mode": "smart" },
+
+	"assets": {
+		"run_worker_first": ["/api/*", "/trpc/*"],
+	},
+
+	"d1_databases":[{
+		"binding": "DB_D1",
+		"database_id": "be4c5439-bb56-46bf-b3cc-8a54bf1c9fcf",
+	}],
 
 	"kv_namespaces": [
 		{ "binding": "KV_AUTH", "id": "27f5d7a1e3974828826ec85a1e74ed72" },
